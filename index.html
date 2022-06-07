@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			table, th, td {
+				border: 1px solid black;
+			}
+			table {
+				border-collapse: collapse;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 0.5rem;
+			}
+
+			.libertarian {
+				background-color: gold;
+			}
+			.democrat {
+				background-color: lightskyblue;
+			}
+			.republican {
+				background-color: lightcoral;
+			}
+			.independent {
+				background-color: orchid;
+			}
+			.libertarian.democrat {
+				background-image: linear-gradient(to right, gold, lightskyblue);
+			}
+			.democrat.republican {
+				background-image: linear-gradient(to right, lightskyblue, lightcoral);
+			}
+			.libertarian.republican {
+				background-image: linear-gradient(to right, lightcoral, gold);
+			}
+
+/*			.libertarian {
+				background-color: #DDD;
+			}
+			.democrat {
+				background-color: #AAA;
+			}
+			.republican {
+				background-color: #888;
+			}
+			.independent {
+				background-color: #FFF;
+			}
+			.libertarian.democrat {
+				background-image: linear-gradient(to right, #DDD, #AAA);
+			}
+			.democrat.republican {
+				background-image: linear-gradient(to right, #AAA, #888);
+			}
+			.libertarian.republican {
+				background-image: linear-gradient(to right, #888, #DDD);
+			}*/
+
+			span.party-legend-square {
+				width: 0.5rem;
+				height: 0.5rem;
+				border: 1px solid black;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body style="text-align: center;">
+		<h1>
+			Tired of choosing between <span class="democrat">Democrat</span> and <span class="republican">Republican</span>?<br>
+			Vote Independent, Vote Nick Mouzourakis!
+		</h1>
+		<h2>Don't be pigeonholed! Vote for the platform that fits <em>you</em> better than the others!</h2>
+		<h3>Main Issues: Right-to-Repair Laws, and Strict Consequences for Companies that Negligently Lose your Private Data,
+			<br>
+			as well as Building Bridges between the Parties to come to Common Sense Compromises, like so:
+		</h3>
+		<span class="party-legend-square independent"></span> = Independent
+		<span class="party-legend-square libertarian" style="margin-left: 1em;"></span> = Libertarian <!-- Maybe a css child selector here -->
+		<span class="party-legend-square democrat" style="margin-left: 1em;"></span> = Democrat <!-- Maybe a css child selector here -->
+		<span class="party-legend-square republican" style="margin-left: 1em;"></span> = Republican <!-- Maybe a css child selector here -->
+		<table>
+			<tr>
+				<th>Issue</th>
+				<th>Position</th>
+				<th>Nuance</th>
+			</tr>
+			<tr>
+				<td>Abortion</td>
+				<td class="libertarian democrat">Pro-Choice...</td>
+				<td class="republican">...Until Natural Viability (~2 trimesters)</td>
+			</tr>
+			<tr>
+				<td>Affordable Housing</td>
+				<td class="democrat">For Affordable Housing...</td>
+				<td class="independent">...As long as it is Built Sustainably, and Guaranteed to be Properly Maintained</td>
+			</tr>
+			<tr>
+				<td>Gun Rights</td>
+				<td class="libertarian republican">For Safe and Responsible Gun Ownership...</td>
+				<td class="democrat">...After Completing a Safety Course, and Storing Properly</td>
+			</tr>
+			<tr>
+				<td>Education</td>
+				<td class="independent">For Allowing Students to Apply across District Lines...</td>
+				<td class="libertarian">...Only if Parents Pay the Tax Difference and Drive their Kids there</td>
+			</tr>
+			<tr>
+				<td>Environment</td>
+				<td class="democrat">For Environmental Conservation and Water Safety...</td>
+				<td class="republican">...And Sustainable Building Development</td>
+			</tr>
+			<tr>
+				<td>Taxes</td>
+				<td class="libertarian republican">No Income or Sales Tax...</td>
+				<td class="republican">...All Programs must be Paid for, and Budgets Balanced</td>
+			</tr>
+			<tr>
+				<td>Infrastructure</td>
+				<td class="democrat">For Building/Restoring Productive Infrastructure...</td>
+				<td class="republican">...As long as it is Paid for</td>
+			</tr>
+			<tr>
+				<td>Welfare</td>
+				<td class="democrat">Pro Welfare-to-Self-Sufficiency Pipieline</td>
+				<td class="republican">...Reformed to create a Smoother Path to Self-Sufficiency</td>
+			</tr>
+			<tr>
+				<td>Healthcare</td>
+				<td class="republican">For Fair-market Healthcare... (Transparent Pricing, Fair Competition)</td>
+				<td class="democrat">...As long as Medicare is allowed to Negotiate Prices and be Purchased by the Public</td>
+			</tr>
+			<tr>
+				<td>Economics</td>
+				<td class="democrat">Fair-market over Free-market</td>
+				<td class="independent">Monopolies <em>must</em> be Prevented to Maintain Competition wherever possible</td>
+			</tr>
+<!-- 			<tr>
+				<td>Drug Legalization</td>
+				<td class="libertarian democrat">For the Legalization of Marijuana...</td>
+				<td class="republican">...Regulated more Strictly than Alcohol/Tobacco</td>
+			</tr> -->
+			<tr>
+				<td>Private Prisons</td>
+				<td class="democrat">Against Privatization of Prisons...</td>
+				<td class="democrat">...Humane Treatment in Public Prisons</td>
+			</tr>
+			<tr>
+				<td>Subsidies/Corporate Welfare</td>
+				<td class="libertarian">For Ending Corporate Welfare...</td>
+				<td class="republican">...Limit Subsidies to Essential Small Businesses (like Small Family Farms)</td>
+			</tr>
+			<tr>
+				<td>LGBTQ+ rights</td>
+				<td class="democrat">For LGBTQ+ Marriage and Equality Under the Law</td>
+				<td class="independent">Sporting Rules should Defer to the School or Sports Organization</td>
+			</tr>
+<!-- 			<tr>
+				<td>Sex Work</td>
+				<td class="libertarian">For the Legalization of Consensual Sex Work...</td>
+				<td class="republican">...Heavily Regulated to Prevent Trafficking and STDs</td>
+			</tr> -->
+			<tr>
+				<td>Unions</td>
+				<td class="democrat">For Private Sector Unions...</td>
+				<td class="libertarian republican">...Against Public Sector Unions, Private Union membership must be Voluntary</td>
+			</tr>
+<!-- 			<tr>
+				<td>Climate Change</td>
+				<td class="democrat">For reducing the use of Fossil Fuels...</td>
+				<td class="libertarian republican">...Without Significantly Disrupting the Economy</td>
+			</tr> -->
+			<tr>
+				<td>Term Limits</td>
+				<td class="independent">For Limiting all Offices to 2 Terms total...</td>
+				<td class="independent">...And Supreme Court Justices to 10 Years Each</td>
+			</tr>
+<!-- 			<tr>
+				<td>Immigration</td>
+				<td class="republican">For Merit-based Immigration...</td>
+				<td class="democrat">...And Family-sponsored Immigration</td>
+			</tr> -->
+<!-- 			<tr>
+				<td>Foreign Policy</td>
+				<td class="libertarian">Against US Soldiers in Foreign Wars that do not Directly Involve Us...</td>
+				<td class="republican">...Military must be Maintained in case of a Domestic Attack</td>
+			</tr> -->
+<!-- 			<tr>
+				<td>Death Penalty</td>
+				<td class="democrat">Against the Death Penalty...</td>
+				<td class="republican">...Except in Extreme Cases (Terrorists, School Shooters, etc.)</td>
+			</tr> -->
+		</table>
+		...And remember: Even if you don't agree with 100% of the above, call my personal number (603) 205-1542, I have an open mind and love engaging with the people I am running to represent.
+	</body>
+</html>
