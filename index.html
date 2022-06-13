@@ -1,8 +1,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Nick Mouzourakis for Ward 3</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 		<style>
+			.opener {
+				font-family: 'Karla', sans-serif;
+				font-size: 10vh;
+				font-weight: 200;
+			}
+			.purple-points {
+				font-family: 'Karla', sans-serif;
+				font-size: 4vw;
+				font-weight: 400;
+			}
+			body, h1, h2, h3, .narrative {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 400;
+			}
+			h1 {
+				margin: 0;
+			}
 			table, th, td {
+				font-family: Times, serif;
 				border: 1px solid black;
 			}
 			table {
@@ -35,51 +57,142 @@
 				background-image: linear-gradient(to right, lightcoral, gold);
 			}
 
-/*			.libertarian {
-				background-color: #DDD;
-			}
-			.democrat {
-				background-color: #AAA;
-			}
-			.republican {
-				background-color: #888;
-			}
-			.independent {
-				background-color: #FFF;
-			}
-			.libertarian.democrat {
-				background-image: linear-gradient(to right, #DDD, #AAA);
-			}
-			.democrat.republican {
-				background-image: linear-gradient(to right, #AAA, #888);
-			}
-			.libertarian.republican {
-				background-image: linear-gradient(to right, #888, #DDD);
-			}*/
-
 			span.party-legend-square {
 				width: 0.5rem;
 				height: 0.5rem;
 				border: 1px solid black;
 				display: inline-block;
 			}
+			span.party-legend-square ~ span.party-legend-square {
+				margin-left: 1rem;
+			}
+
+			.opening-text {
+				height: calc(100vh - 10rem);
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+			}
+
+			.upper-white-gradient {
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: 10rem;
+				top: calc(100vh - 10rem);
+				background: linear-gradient(white, #0000);
+				z-index: 1;
+			}
+
+			.middle-gradient {
+				width: min(max(70vw, 40rem), 85vw);
+				height: calc(70vw * 27 / 17 - 22rem);
+				background: linear-gradient(to right, #c495ff, #c495ff, #c495ff, #0000);
+				padding: 11rem 0;
+			}
+
+			.middle-gradient-text {
+				width: 65%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+
+			.nick-photo {
+				position: absolute;
+				right: 0;
+				top: calc(100vh - 10rem);
+				width: 70vw;
+				z-index: -1;
+			}
+
+			.lower-white-gradient {
+				position: absolute;
+				width: 100vw;
+				height: 10rem;
+				top: calc(70vw * 27 / 17 + 100vh - 20rem);
+				background: linear-gradient(#0000, white);
+				z-index: 1;
+			}
+
+			.gradient-text {
+				background: linear-gradient(to right, red, blue);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+			}
 		</style>
 	</head>
-	<body style="text-align: center;">
-		<h1>
-			Tired of choosing between <span class="democrat">Democrat</span> and <span class="republican">Republican</span>?<br>
-			Vote Independent, Vote Nick Mouzourakis!
-		</h1>
-		<h2>Don't be pigeonholed! Vote for the platform that fits <em>you</em> better than the others!</h2>
-		<h3>Main Issues: Right-to-Repair Laws, and Strict Consequences for Companies that Negligently Lose your Private Data,
+	<body style="margin: 0 0 2rem; text-align: center;">
+		<!-- Upper White BG -->
+		<div class="opening-text">
+			<span class="opener">TIRED OF<br><span style="color: red;">CHOOSING</span> <span style="color: blue;">PARTIES</span>?</span>
+		</div>
+		<div class="upper-white-gradient"></div>
+		<div class="middle-gradient">
+			<div class="middle-gradient-text">
+				<span class="purple-points">Vote Independent<br>Nick Mouzourakis</span>
+				<span class="purple-points">For Ward 3 State<br>Representative</span>
+				<span class="purple-points">No Donors</span>
+				<span class="purple-points">No Special Interests</span>
+				<span class="purple-points">Beholden Only<br>to Voters</span>
+				<span class="purple-points">With a Sane Middle-<br>Ground Platform</span>
+				<span class="purple-points">That Lebanon<br>can Agree on</span>
+			</div>
+		</div>
+		<img src="nick.jpg" class="nick-photo">
+		<div class="lower-white-gradient"></div>
+		<h1 style="margin-top: 2rem;">
+			Hello. My Name is <span style="color: darkorchid">Nick Mouzourakis</span>,
 			<br>
-			as well as Building Bridges between the Parties to come to Common Sense Compromises, like so:
-		</h3>
+			I was <span style="color: forestgreen;">Born and Raised in NH</span>,
+			<br>
+			and I Want to Give You the <span style="color: darkorchid">Choice</span>
+			<br>
+			that I <span style="color: darkorchid">Yearn</span> to <span style="color: darkorchid">Make</span> on <span style="color: darkorchid">Every Election</span>,
+			<br>
+			but <span style="color: blue;">Rarely Ever See</span> <span style="color: red;">on the Ballot</span>.
+		</h1>
+		<h2>
+			My <span style="color: darkorchid">Political Promises</span> are Simple,
+			<br>
+			Small Enough to Fit on a Post Card,
+			<br>
+			and <span style="color: darkorchid">Realistic</span>, so that I can <span style="color: darkorchid">Achieve</span> them
+			<br>
+			Without <span style="color: red">either</span> <span style="color: blue">Party</span> <span style="color: red">Breathing</span> <span style="color: blue">Down</span> <span style="color: red">my</span> <span style="color: blue">Neck</span>
+			<br>
+			and <span style="color: blue">Pressuring</span> <span style="color: darkorchid">me</span> to <span style="color: red">Tow</span> <span style="color: blue">their</span> <span style="color: red">Line</span>:
+		</h2>
+		<h2>
+			<strong>Promise #1</strong>: I will Introduce a <a href="https://www.repair.org/stand-up#right-to-repair-br-data-preserve-html-node-true-faq-">Right-to-Repair</a> Bill,
+			<br>
+			so that 3rd-Party Repair Businesses can Give Competitive Quotes,
+			<br>
+			Reduce E-Waste, and Fix the Devices and Machines you Already Have
+			<br>
+			without Pressuring You to Buy a New Ones.
+		</h2>
+		<h2>
+			<strong>Promise #2</strong>: I will Introduce a Bill
+			<br>
+			that Imposes Strict Consequences
+			<br>
+			on Companies that Negligently Lose your Private Data.
+		</h2>
+		Last Year, I Underwent a Background Check for a Job, only to be Told a Month Later that All my Private Data: my Name, Birth Date, Address, Employment History, Social Security Number, etc, had ALL been Lost to a Data Breach of this Company's Servers. My Legal Options however, were Essentially Nil, because this Company was neither a Hospital nor a Bank, and therefore Faced no Legal Accountability for their Negligence. As a Senior Software Security Engineer with over 14 Years of Experience, I am Uniquely Qualified to Solve this Problem.
+		<h2>
+			<strong>Promise #3</strong>: I will <span class="gradient-text">Build Bridges</span> between <span style="color: red">the</span> <span style="color: blue">Parties</span>
+			<br>
+			to come to <span style="color: darkorchid">Common-Sense Compromises</span> on Major Issues,
+			<br>
+			Summarized with This Table:
+		</h2>
 		<span class="party-legend-square independent"></span> = Independent
-		<span class="party-legend-square libertarian" style="margin-left: 1em;"></span> = Libertarian <!-- Maybe a css child selector here -->
-		<span class="party-legend-square democrat" style="margin-left: 1em;"></span> = Democrat <!-- Maybe a css child selector here -->
-		<span class="party-legend-square republican" style="margin-left: 1em;"></span> = Republican <!-- Maybe a css child selector here -->
-		<table>
+		<span class="party-legend-square libertarian"></span> = Libertarian
+		<span class="party-legend-square democrat"></span> = Democrat
+		<span class="party-legend-square republican"></span> = Republican
+		<table style="margin-bottom: 1rem;">
 			<tr>
 				<th>Issue</th>
 				<th>Position</th>
@@ -98,7 +211,7 @@
 			<tr>
 				<td>Gun Rights</td>
 				<td class="libertarian republican">For Safe and Responsible Gun Ownership...</td>
-				<td class="democrat">...After Completing a Safety Course, and Storing Properly</td>
+				<td class="democrat">...After Completing a Safety Course, and Properly Storing</td>
 			</tr>
 			<tr>
 				<td>Education</td>
@@ -135,15 +248,10 @@
 				<td class="democrat">Fair-market over Free-market</td>
 				<td class="independent">Monopolies <em>must</em> be Prevented to Maintain Competition wherever possible</td>
 			</tr>
-<!-- 			<tr>
-				<td>Drug Legalization</td>
-				<td class="libertarian democrat">For the Legalization of Marijuana...</td>
-				<td class="republican">...Regulated more Strictly than Alcohol/Tobacco</td>
-			</tr> -->
 			<tr>
 				<td>Private Prisons</td>
 				<td class="democrat">Against Privatization of Prisons...</td>
-				<td class="democrat">...Humane Treatment in Public Prisons</td>
+				<td class="democrat">...For Humane Treatment in Public Prisons</td>
 			</tr>
 			<tr>
 				<td>Subsidies/Corporate Welfare</td>
@@ -155,46 +263,23 @@
 				<td class="democrat">For LGBTQ+ Marriage and Equality Under the Law</td>
 				<td class="independent">Sporting Rules should Defer to the School or Sports Organization</td>
 			</tr>
-<!-- 			<tr>
-				<td>Sex Work</td>
-				<td class="libertarian">For the Legalization of Consensual Sex Work...</td>
-				<td class="republican">...Heavily Regulated to Prevent Trafficking and STDs</td>
-			</tr> -->
 			<tr>
 				<td>Unions</td>
 				<td class="democrat">For Private Sector Unions...</td>
 				<td class="libertarian republican">...Against Public Sector Unions, Private Union membership must be Voluntary</td>
 			</tr>
-<!-- 			<tr>
-				<td>Climate Change</td>
-				<td class="democrat">For reducing the use of Fossil Fuels...</td>
-				<td class="libertarian republican">...Without Significantly Disrupting the Economy</td>
-			</tr> -->
 			<tr>
 				<td>Term Limits</td>
 				<td class="independent">For Limiting all Offices to 2 Terms total...</td>
 				<td class="independent">...And Supreme Court Justices to 10 Years Each</td>
 			</tr>
-<!-- 			<tr>
-				<td>Immigration</td>
-				<td class="republican">For Merit-based Immigration...</td>
-				<td class="democrat">...And Family-sponsored Immigration</td>
-			</tr> -->
-<!-- 			<tr>
-				<td>Foreign Policy</td>
-				<td class="libertarian">Against US Soldiers in Foreign Wars that do not Directly Involve Us...</td>
-				<td class="republican">...Military must be Maintained in case of a Domestic Attack</td>
-			</tr> -->
-<!-- 			<tr>
-				<td>Death Penalty</td>
-				<td class="democrat">Against the Death Penalty...</td>
-				<td class="republican">...Except in Extreme Cases (Terrorists, School Shooters, etc.)</td>
-			</tr> -->
 		</table>
-		...And remember: Even if you don't agree with 100% of the above, call my personal number at six-zero-three two-zero-five one-five-four-two, or send me an email at: nevumx [AT] gmail [DOT] com
+		...And remember: Even if you don't agree with 100% of the above, call my personal number at
 		<br>
-		I have an open mind and love engaging with the people I am running to represent. (My contact information is spelled out above to prevent it from being bulk collected for spam purposes)
+		six-zero-three two-zero-five one-five-four-two, or send me an email at nevumx [AT] gmail [DOT] com
 		<br>
-		A prototype of the new site can be found <a href="prototype.html">here</a>.
+		I have an open mind and love engaging with the people I am running to represent.
+		<br>
+		(My contact information is spelled out above to prevent it from being bulk collected for spam purposes)
 	</body>
 </html>
