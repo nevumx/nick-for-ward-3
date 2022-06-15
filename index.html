@@ -4,24 +4,44 @@
 		<title>Nick Mouzourakis for Ward 3</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;500&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 		<style>
 			.opener {
 				font-family: 'Karla', sans-serif;
 				font-size: 10vh;
 				font-weight: 200;
 			}
-			.purple-points {
+			.purple-point {
 				font-family: 'Karla', sans-serif;
-				font-size: 4vw;
-				font-weight: 400;
+				font-size: 3.5vw;
+				font-weight: 500;
+				color: white
+			}
+			body {
+				text-align: center;
+				margin: 0;
 			}
 			body, h1, h2, h3, .narrative {
 				font-family: 'Raleway', sans-serif;
 				font-weight: 400;
 			}
-			h1 {
-				margin: 0;
+			h1, h2, h3 {
+				margin: 0 0 2rem;
+			}
+			button {
+				background-color: darkorchid;
+				padding: 0.3rem;
+				color: white;
+				border: 0.5rem solid darkorchid;
+				border-radius: 0.5rem;
+				font-family: 'Karla', sans-serif;
+				font-weight: 500;
+				font-size: 24px;
+				cursor: pointer;
+			}
+			button:active {
+				background-color: rebeccapurple;
+				border: 0.5rem solid rebeccapurple;
 			}
 			table, th, td {
 				font-family: Times, serif;
@@ -72,8 +92,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: space-evenly;
+				padding: 0 2rem;
 			}
-
 			.upper-white-gradient {
 				position: absolute;
 				left: 0;
@@ -83,14 +103,12 @@
 				background: linear-gradient(white, #0000);
 				z-index: 1;
 			}
-
 			.middle-gradient {
 				width: min(max(70vw, 40rem), 85vw);
 				height: calc(70vw * 27 / 17 - 22rem);
-				background: linear-gradient(to right, #c495ff, #c495ff, #c495ff, #0000);
+				background: linear-gradient(to right, darkorchid, darkorchid, darkorchid, #0000);
 				padding: 11rem 0;
 			}
-
 			.middle-gradient-text {
 				width: 65%;
 				height: 100%;
@@ -98,7 +116,6 @@
 				flex-direction: column;
 				justify-content: space-between;
 			}
-
 			.nick-photo {
 				position: absolute;
 				right: 0;
@@ -106,7 +123,6 @@
 				width: 70vw;
 				z-index: -1;
 			}
-
 			.lower-white-gradient {
 				position: absolute;
 				width: 100vw;
@@ -116,32 +132,79 @@
 				z-index: 1;
 			}
 
+			.promise {
+				border: 0.2rem solid darkorchid;
+				border-radius: 1rem;
+				padding: 1rem;
+			}
+
+			@media (min-aspect-ratio: 1/1) {
+				.promise {
+					width: 38vw;
+				}
+
+				.mobile-break {
+					display: none;
+				}
+
+				.promise-box {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					column-gap: 2rem;
+				}
+			}
+
 			.gradient-text {
 				background: linear-gradient(to right, red, blue);
 				-webkit-text-fill-color: transparent;
 				-webkit-background-clip: text;
 			}
+
+			.modal-background {
+				position: fixed;
+				z-index: 2;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: #00000080;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+
+			.modal {
+				display: inline-block;
+				background-color: white;
+				width: 70vw;
+				padding: 1rem;
+				border: 1rem solid white;
+				border-radius: 1rem;
+				box-shadow: 0 0 1rem #000A;
+			}
 		</style>
 	</head>
-	<body style="margin: 0; text-align: center;">
+	<body>
 		<div class="opening-text">
 			<span class="opener">TIRED OF<br><span style="color: red;">CHOOSING</span> <span style="color: blue;">PARTIES</span>?</span>
 		</div>
 		<div class="upper-white-gradient"></div>
 		<div class="middle-gradient">
 			<div class="middle-gradient-text">
-				<span class="purple-points">Vote Independent<br>Nick Mouzourakis</span>
-				<span class="purple-points">For Ward 3 State<br>Representative</span>
-				<span class="purple-points">No Donors</span>
-				<span class="purple-points">No Special Interests</span>
-				<span class="purple-points">Beholden Only<br>to Voters</span>
-				<span class="purple-points">With a Sane Middle-<br>Ground Platform</span>
-				<span class="purple-points">That Lebanon<br>can Agree on</span>
+				<span class="purple-point">Vote Independent<br>Nick Mouzourakis</span>
+				<span class="purple-point">For Ward 3 State<br>Representative</span>
+				<span class="purple-point">No Donors</span>
+				<span class="purple-point">No Special Interests</span>
+				<span class="purple-point">Beholden Only<br>to Voters</span>
+				<span class="purple-point">With a Sane Middle-<br>Ground Platform</span>
+				<span class="purple-point">That Lebanon<br>can Agree on</span>
 			</div>
 		</div>
 		<img src="nick.jpg" class="nick-photo">
 		<div class="lower-white-gradient"></div>
-		<div style="margin: 2rem 1rem;">
+		<div style="padding: 2rem 1rem;">
 			<h1>
 				Hello. My Name is <span style="color: darkorchid">Nick Mouzourakis</span>,
 				<br>
@@ -164,34 +227,39 @@
 				<br>
 				and <span style="color: blue">Pressuring</span> <span style="color: darkorchid">me</span> to <span style="color: red">Tow</span> <span style="color: blue">their</span> <span style="color: red">Line</span>:
 			</h2>
-			<h2>
-				<strong>Promise #1</strong>: I will Introduce a <a href="https://www.repair.org/stand-up#right-to-repair-br-data-preserve-html-node-true-faq-">Right-to-Repair</a> Bill,
-				<br>
-				so that 3rd-Party Repair Businesses can Give Competitive Quotes,
-				<br>
-				Reduce E-Waste, and Fix the Devices and Machines you Already Have
-				<br>
-				without Pressuring You to Buy a New Ones.
-			</h2>
-			<h2>
-				<strong>Promise #2</strong>: I will Introduce a Bill
-				<br>
-				that Imposes Strict Consequences
-				<br>
-				on Companies that Negligently Lose your Private Data.
-			</h2>
-			Last Year, I Underwent a Background Check for a Job, only to be Told a Month Later that All my Private Data: my Name, Birth Date, Address, Employment History, Social Security Number, etc, had ALL been Lost to a Data Breach of this Company's Servers. My Legal Options however, were Essentially Nil, because this Company was neither a Hospital nor a Bank, and therefore Faced no Legal Accountability for their Negligence. As a Senior Software Security Engineer with over 14 Years of Experience, I am Uniquely Qualified to Solve this Problem.
-			<h2>
-				<strong>Promise #3</strong>: I will <span class="gradient-text">Build Bridges</span> between <span style="color: red">the</span> <span style="color: blue">Parties</span>
-				<br>
-				to come to <span style="color: darkorchid">Common-Sense Compromises</span> on Major Issues,
-				<br>
-				Summarized with This Table:
-			</h2>
-			<span class="party-legend-square independent"></span> = Independent
-			<span class="party-legend-square libertarian"></span> = Libertarian
-			<span class="party-legend-square democrat"></span> = Democrat
-			<span class="party-legend-square republican"></span> = Republican
+			<div class="promise-box">
+				<h2 class="promise">
+					<strong>Promise #1:</strong><br>I will Introduce a <a href="https://www.repair.org/stand-up#right-to-repair-br-data-preserve-html-node-true-faq-">Right-to-Repair</a> Bill,
+					<br class="mobile-break">
+					so that 3rd-Party Repair Businesses can Give Competitive Quotes,
+					<br class="mobile-break">
+					Reduce E-Waste, and Fix the Devices and Machines you Already Have
+					<br class="mobile-break">
+					without Pressuring You to Buy a New Ones.
+				</h2>
+				<h2 class="promise">
+					<strong>Promise #2:</strong><br>I will Introduce a Bill
+					<br class="mobile-break">
+					that Imposes Strict Consequences
+					<br class="mobile-break">
+					on Companies that Negligently Lose your Private Data.
+					<br>
+					<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'visible'; document.body.style.overflow = 'hidden';">Find Out Why</button>
+				</h2>
+				<h2 class="promise">
+					<strong>Promise #3:</strong><br>I will <span class="gradient-text">Build Bridges</span> between <span style="color: red">the</span> <span style="color: blue">Parties</span>
+					<br class="mobile-break">
+					to come to <span style="color: darkorchid">Common-Sense Compromises</span>
+					<br class="mobile-break">
+					on Major Issues, Summarized with This Table:
+				</h2>
+			</div>
+			<div style="font-family: Times, serif; margin-bottom: 0.1rem;">
+				<span class="party-legend-square independent"></span> = Independent
+				<span class="party-legend-square libertarian"></span> = Libertarian
+				<span class="party-legend-square democrat"></span> = Democrat
+				<span class="party-legend-square republican"></span> = Republican
+			</div>
 			<table style="margin-bottom: 1rem;">
 				<tr>
 					<th>Issue</th>
@@ -281,6 +349,13 @@
 			I have an open mind and love engaging with the people I am running to represent.
 			<br>
 			(My contact information is spelled out above to prevent it from being bulk collected for spam purposes)
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="story">
+			<div class="modal">
+				Last Year, I Underwent a Background Check for a Job, only to be Told a Month Later that All my Private Data: my Name, Birth Date, Address, Employment History, Social Security Number, etc, had ALL been Lost to a Data Breach of this Company's Servers. My Legal Options however, were Essentially Nil, because this Company was neither a Hospital nor a Bank, and therefore Faced no Legal Accountability for their Negligence. As a Senior Software Security Engineer with over 14 Years of Experience, I am Uniquely Qualified to Solve this Problem.
+				<br>
+				<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'hidden'; document.body.style.overflow = 'visible';">Got It</button>
+			</div>
 		</div>
 	</body>
 </html>
