@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="theme-color" content="#9932CC">
+		<meta name="msapplication-TileColor" content="#9932CC">
+		<title>Abortion</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@500&family=Raleway:wght@400&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<style>
+			body {
+				text-align: center;
+				margin: 0;
+			}
+			body, h1 {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 400;
+			}
+			h1 {
+				margin: 0 0 1rem;
+			}
+			button {
+				background-color: darkorchid;
+				padding: 0.3rem;
+				color: white;
+				border: 0.5rem solid darkorchid;
+				border-radius: 0.5rem;
+				font-family: 'Karla', sans-serif;
+				font-weight: 500;
+				font-size: 24px;
+				cursor: pointer;
+			}
+			button:active {
+				background-color: rebeccapurple;
+				border: 0.5rem solid rebeccapurple;
+			}
+			.promise {
+				border: 0.2rem solid darkorchid;
+				border-radius: 1rem;
+				padding: 1rem;
+				margin: 1rem;
+			}
+		</style>
+		<script type="text/javascript">
+			function fadeIn() {
+				const revealElements = document.querySelectorAll('.fade-in');
+				for (const revealElement of revealElements) {
+					const rect = revealElement.getBoundingClientRect();
+					const elementOffset = (revealElement.classList.contains('from-left')
+						|| revealElement.classList.contains('from-right')) ? 0 : 50;
+					if ((rect.top + rect.bottom) / 2 < window.innerHeight + elementOffset) {
+						revealElement.classList.add('activated');
+					}
+				}
+			}
+			window.addEventListener('load', fadeIn, { once: true });
+			window.addEventListener('scroll', fadeIn);
+		</script>
+		<noscript>
+			<div style="position: absolute; left: 0; right: 0; text-align: center;">
+				You must have JavaScript enabled to view this webpage. Regardless, remember to vote Mouzourakis on November 8th!
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="promise">
+			<h1>Abortion</h1>
+			Test
+		</div>
+		<a href="/#issues"><button>Back</button></a>
+	</body>
+</html>
