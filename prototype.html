@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="theme-color" content="#9932CC">
+		<meta name="msapplication-TileColor" content="#9932CC">
+		<title>Nick Mouzourakis for Ward 3</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;500&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<style>
+			.opener {
+				font-family: 'Karla', sans-serif;
+				font-size: 10vh;
+				font-weight: 200;
+			}
+			.purple-point {
+				font-family: 'Karla', sans-serif;
+				font-size: 3.5vw;
+				font-weight: 500;
+				color: white
+			}
+			body {
+				text-align: center;
+				margin: 0;
+			}
+			body, h1, h2, .narrative {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 400;
+			}
+			h1, h2, .promise {
+				margin: 0 0 2rem;
+			}
+			.promise h2 {
+				margin-bottom: 0;
+			}
+			button {
+				background-color: darkorchid;
+				padding: 0.3rem;
+				color: white;
+				border: 0.5rem solid darkorchid;
+				border-radius: 0.5rem;
+				font-family: 'Karla', sans-serif;
+				font-weight: 500;
+				font-size: 24px;
+				cursor: pointer;
+			}
+			button:active {
+				background-color: rebeccapurple;
+				border: 0.5rem solid rebeccapurple;
+			}
+			table, th, td {
+				font-family: Times, serif;
+				border: 1px solid black;
+			}
+			table {
+				text-align: left;
+				border-collapse: collapse;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 0.5rem;
+			}
+
+			.libertarian {
+				background-color: gold;
+			}
+			.democrat {
+				background-color: lightskyblue;
+			}
+			.republican {
+				background-color: lightcoral;
+			}
+			.independent {
+				background-color: orchid;
+			}
+			.libertarian.democrat {
+				background-image: linear-gradient(to right, gold, lightskyblue);
+			}
+			.democrat.republican {
+				background-image: linear-gradient(to right, lightskyblue, lightcoral);
+			}
+			.libertarian.republican {
+				background-image: linear-gradient(to right, lightcoral, gold);
+			}
+
+			span.party-legend-square {
+				width: 0.5rem;
+				height: 0.5rem;
+				border: 1px solid black;
+				display: inline-block;
+			}
+			span.party-legend-square ~ span.party-legend-square {
+				margin-left: 1rem;
+			}
+
+			.opening-text {
+				height: calc(100vh - 10rem);
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				padding: 0 2rem;
+			}
+			.upper-white-gradient {
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: 10rem;
+				top: calc(100vh - 10rem);
+				background: linear-gradient(white, #0000);
+				z-index: 1;
+			}
+			.middle-gradient {
+				width: min(max(70vw, 40rem), 85vw);
+				height: calc(70vw * 27 / 17 - 22rem);
+				background: linear-gradient(to right, darkorchid, darkorchid, darkorchid, #0000);
+				padding: 11rem 0;
+			}
+			.middle-gradient-text {
+				width: 65%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.nick-photo {
+				position: absolute;
+				right: 0;
+				top: calc(100vh - 10rem);
+				width: 70vw;
+				z-index: -1;
+			}
+			.lower-white-gradient {
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: 10rem;
+				top: calc(70vw * 27 / 17 + 100vh - 20rem);
+				background: linear-gradient(#0000, white);
+				z-index: 1;
+			}
+
+			.promise {
+				border: 0.2rem solid darkorchid;
+				border-radius: 1rem;
+				padding: 1rem;
+			}
+
+			.fade-in {
+				transform: translateY(50px);
+				opacity: 0;
+				transition: transform 1s, opacity 1s;
+			}
+			.fade-in.from-left-force {
+				transform: translateX(-50px);
+			}
+			.fade-in.without-translation {
+				transform: translateX(0);
+				transition-delay: 0.25s;
+			}
+
+			@media (min-aspect-ratio: 1/1) {
+				.promise {
+					width: 38vw;
+				}
+
+				.mobile-break {
+					display: none;
+				}
+
+				.promise-box {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					column-gap: 2rem;
+				}
+
+				.fade-in.from-left {
+					transform: translateX(-50px);
+				}
+
+				.fade-in.from-right {
+					transform: translateX(50px);
+				}
+			}
+
+			.fade-in.activated {
+				transform: translateY(0);
+				opacity: 1;
+			}
+
+			.gradient-text {
+				background: linear-gradient(to right, red, blue);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+			}
+
+			.modal-background {
+				position: fixed;
+				z-index: 2;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: #00000080;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+
+			.modal {
+				display: inline-block;
+				background-color: white;
+				width: 70vw;
+				padding: 1rem;
+				border: 1rem solid white;
+				border-radius: 1rem;
+				box-shadow: 0 0 1rem #0009;
+				font-size: min(4vw, 4vh);
+			}
+		</style>
+		<script type="text/javascript">
+			function fadeIn() {
+				const revealElements = document.querySelectorAll('.fade-in');
+				for (const revealElement of revealElements) {
+					const rect = revealElement.getBoundingClientRect();
+					const elementOffset = (revealElement.classList.contains('from-left')
+						|| revealElement.classList.contains('from-right')) ? 0 : 50;
+					if ((rect.top + rect.bottom) / 2 < window.innerHeight + elementOffset) {
+						revealElement.classList.add('activated');
+					}
+				}
+			}
+			window.addEventListener('load', fadeIn, { once: true });
+			window.addEventListener('scroll', fadeIn);
+		</script>
+		<noscript>
+			<div style="position: absolute; left: 0; right: 0; text-align: center;">
+				You must have JavaScript enabled to view this webpage. Regardless, remember to vote Mouzourakis on November 8th!
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="opening-text fade-in">
+			<span class="opener">TIRED OF<br><span style="color: red;">CHOOSING</span> <span style="color: blue;">PARTIES</span>?</span>
+		</div>
+		<div class="upper-white-gradient"></div>
+		<div class="middle-gradient">
+			<div class="middle-gradient-text">
+				<span class="purple-point fade-in from-left-force">Vote Independent<br>Nick Mouzourakis</span>
+				<span class="purple-point fade-in from-left-force">For Ward 3 State<br>Representative</span>
+				<span class="purple-point fade-in from-left-force">No Donors</span>
+				<span class="purple-point fade-in from-left-force">No Special Interests</span>
+				<span class="purple-point fade-in from-left-force">Beholden Only<br>to Voters</span>
+				<span class="purple-point fade-in from-left-force">With a Sane Middle-<br>Ground Platform</span>
+				<span class="purple-point fade-in from-left-force">That Lebanon<br>can Agree on</span>
+			</div>
+		</div>
+		<img src="nick.jpg" class="nick-photo">
+		<div class="lower-white-gradient"></div>
+		<div style="padding: 2rem 1rem;">
+			<h1 class="fade-in">
+				Hello. My Name is <span style="color: darkorchid">Nick Mouzourakis</span>,
+				<br>
+				I was <span style="color: forestgreen;">Born and Raised in NH</span>,
+				<br>
+				and I Want to Give You the <span style="color: darkorchid">Choice</span>
+				<br>
+				that I <span style="color: darkorchid">Yearn</span> to <span style="color: darkorchid">Make</span> on <span style="color: darkorchid">Every Election</span>,
+				<br>
+				but <span style="color: blue;">Rarely Ever See</span> <span style="color: red;">on the Ballot</span>.
+			</h1>
+			<h2 class="fade-in">
+				My <span style="color: darkorchid">Political Promises</span> are Simple,
+				<br>
+				Small Enough to Fit on a Post Card,
+				<br>
+				and <span style="color: darkorchid">Realistic</span>, so that I can <span style="color: darkorchid">Achieve</span> them
+				<br>
+				Without <span style="color: red">either</span> <span style="color: blue">Party</span> <span style="color: red">Breathing</span> <span style="color: blue">Down</span> <span style="color: red">my</span> <span style="color: blue">Neck</span>
+				<br>
+				and <span style="color: blue">Pressuring</span> <span style="color: darkorchid">me</span> to <span style="color: red">Tow</span> <span style="color: blue">their</span> <span style="color: red">Line</span>:
+			</h2>
+			<div class="promise-box">
+				<span class="promise fade-in from-left">
+					<h2>
+						<strong>Promise #1:</strong><br>I will Introduce a <a href="https://www.repair.org/stand-up#right-to-repair-br-data-preserve-html-node-true-faq-">Right-to-Repair</a> Bill,
+						<br class="mobile-break">
+						so that 3rd-Party Repair Businesses can Give Competitive Quotes,
+						<br class="mobile-break">
+						Reduce E-Waste, and Fix the Devices and Machines you Already Have
+						<br class="mobile-break">
+						without Pressuring You to Buy a New Ones.
+					</h2>
+				</span>
+				<span class="promise fade-in from-right">
+					<h2>
+						<strong>Promise #2:</strong><br>I will Introduce a Bill
+						<br class="mobile-break">
+						that Imposes Strict Consequences
+						<br class="mobile-break">
+						on Companies that Negligently Lose your Private Data.
+					</h2>
+					<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'visible'; document.body.style.overflow = 'hidden';">Find Out Why</button>
+				</span>
+				<span class="promise fade-in">
+					<h2>
+						<strong>Promise #3:</strong><br>I will <span class="gradient-text">Build Bridges</span> between <span style="color: red">the</span> <span style="color: blue">Parties</span>
+						<br class="mobile-break">
+						to come to <span style="color: darkorchid">Common-Sense Compromises</span>
+						<br class="mobile-break">
+						on Major Issues, Summarized with This Table:
+					</h2>
+				</span>
+			</div>
+			<div class="fade-in">
+				<div style="font-family: Times, serif; margin-bottom: 0.1rem;">
+					<span class="party-legend-square independent"></span> = Independent
+					<span class="party-legend-square libertarian"></span> = Libertarian
+					<span class="party-legend-square democrat"></span> = Democrat
+					<span class="party-legend-square republican"></span> = Republican
+				</div>
+				<table style="margin-bottom: 1rem;" id="issues">
+					<tr>
+						<th>Issue</th>
+						<th>Position</th>
+						<th>Nuance</th>
+					</tr>
+					<tr>
+						<td>Abortion</td>
+						<td class="libertarian democrat">Pro-Choice...</td>
+						<td class="republican">...Until Natural Viability (~2 trimesters)</td>
+					</tr>
+					<tr>
+						<td>Affordable Housing</td>
+						<td class="democrat">For Affordable Housing...</td>
+						<td class="independent">...As long as it is Built Sustainably, and Guaranteed to be Properly Maintained</td>
+					</tr>
+					<tr>
+						<td>Gun Rights</td>
+						<td class="libertarian republican">For Safe and Responsible Gun Ownership...</td>
+						<td class="democrat">...After Completing a Safety Course, and Properly Storing</td>
+					</tr>
+					<tr>
+						<td>Education</td>
+						<td class="independent">For Allowing Students to Apply across District Lines...</td>
+						<td class="libertarian">...Only if Parents Pay the Tax Difference and Drive their Kids there</td>
+					</tr>
+					<tr>
+						<td>Environment</td>
+						<td class="democrat">For Environmental Conservation and Water Safety...</td>
+						<td class="republican">...And Sustainable Building Development</td>
+					</tr>
+					<tr>
+						<td>Taxes</td>
+						<td class="libertarian republican">No Income or Sales Tax...</td>
+						<td class="republican">...All Programs must be Paid for, and Budgets Balanced</td>
+					</tr>
+					<tr>
+						<td>Infrastructure</td>
+						<td class="democrat">For Building/Restoring Productive Infrastructure...</td>
+						<td class="republican">...As long as it is Paid for</td>
+					</tr>
+					<tr>
+						<td>Welfare</td>
+						<td class="independent">For a Welfare-to-Self-Sufficiency Pipeline...</td>
+						<td class="independent">...Reformed to create a Smoother Path to Self-Sufficiency</td>
+					</tr>
+					<tr>
+						<td>Healthcare</td>
+						<td class="republican">For Fair-market Healthcare... (Transparent Pricing, Fair Competition)</td>
+						<td class="democrat">...As long as Medicare is allowed to Negotiate Prices and be Purchased by the Public</td>
+					</tr>
+					<tr>
+						<td>Economics</td>
+						<td class="democrat">Fair-market over Free-market</td>
+						<td class="independent">Monopolies <em>must</em> be Prevented to Maintain Competition wherever possible</td>
+					</tr>
+					<tr>
+						<td>Private Prisons</td>
+						<td class="democrat">Against Privatization of Prisons...</td>
+						<td class="democrat">...For Humane Treatment in Public Prisons</td>
+					</tr>
+					<tr>
+						<td>Subsidies/Corporate Welfare</td>
+						<td class="libertarian">For Ending Corporate Welfare...</td>
+						<td class="republican">...Limit Subsidies to Essential Small Businesses (like Small Family Farms)</td>
+					</tr>
+					<tr>
+						<td>LGBTQ+ rights</td>
+						<td class="democrat">For LGBTQ+ Marriage and Equality Under the Law</td>
+						<td class="independent">Sporting Rules should Defer to the School or Sports Organization</td>
+					</tr>
+					<tr>
+						<td>Unions</td>
+						<td class="democrat">For Private Sector Unions...</td>
+						<td class="libertarian republican">...Against Public Sector Unions, Private Union membership must be Voluntary</td>
+					</tr>
+					<tr>
+						<td>Term Limits</td>
+						<td class="independent">For Limiting all Offices to 2 Terms total...</td>
+						<td class="independent">...And Supreme Court Justices to 10 Years Each</td>
+					</tr>
+				</table>
+			</div>
+			<div class="fade-in without-translation" id="contact">
+				...and even if you don't agree with 100% of the above, call my personal number
+				<br>
+				<span>(</span><span>6</span><span>0</span><span>3</span><span>)</span>
+				<span>2</span><span>0</span><span>5</span><span>-</span><span>1</span><span>5</span><span>4</span><span>2</span>
+				(best times to call are mornings, evenings, and weekends)
+				<br>
+				or send me an email at
+				<span>n</span><span>e</span><span>v</span><span>u</span><span>m</span><span>x</span><span>@</span><span>g</span><span>m</span><span>a</span><span>i</span><span>l</span><span>.</span><span>c</span><span>o</span><span>m</span>
+				<br>
+				I have an open mind and love engaging with the people I am running to represent
+				<br>
+				<br>
+				Nick Mouzourakis,
+				<span>2</span><span>6</span>
+				<span>B</span><span>a</span><span>s</span><span>s</span><span>y</span>
+				<span>S</span><span>t</span><span>,</span>
+				<span>L</span><span>e</span><span>b</span><span>a</span><span>n</span><span>o</span><span>n</span><span>,</span>
+				<span>N</span><span>H</span>
+				<span>0</span><span>3</span><span>7</span><span>6</span><span>6</span>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="story">
+			<div class="modal">
+				Last Year, I Underwent a Background Check for a Job, only to be Told a Month Later that All my Private Data: my Name, Birth Date, Address, Employment History, Social Security Number, etc, had ALL been Lost to a Data Breach of this Company's Servers. My Legal Options however, were Essentially Nil, because this Company was neither a Hospital nor a Bank, and therefore Faced no Legal Accountability for their Negligence. As a Senior Software Security Engineer with over 14 Years of Experience, I am Uniquely Qualified to Solve this Problem.
+				<br>
+				<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'hidden'; document.body.style.overflow = 'visible';">Got It</button>
+			</div>
+		</div>
+	</body>
+</html>
