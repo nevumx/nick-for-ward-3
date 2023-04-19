@@ -49,16 +49,59 @@
 				background-color: rebeccapurple;
 				border: 0.5rem solid rebeccapurple;
 			}
-			table, th, td {
-				font-family: Times, serif;
-				border: 1px solid black;
-			}
+
 			table {
 				text-align: left;
-				border-collapse: collapse;
+				border-collapse: separate;
+				border-spacing: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-bottom: 0.5rem;
+				font-family: Times, serif;
+			}
+			td, th {
+				border-width: 0 0.5px 1px;
+				border-style: solid;
+				border-color: black;
+			}
+			tr ~ tr:hover + tr td {
+				border-top-width: 1px;
+			}
+			tr ~ tr:hover td {
+				padding: 1rem 1px;
+				text-align: center;
+			}
+			tr ~ tr td {
+				transition: padding-top 0.25s ease, padding-bottom 0.25s ease;
+				cursor: pointer;
+			}
+			tr ~ tr:hover td:first-child {
+				border-left: 3px solid darkorchid;
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				padding-left: 1px;
+			}
+			tr ~ tr:hover td {
+				border-top-width: 3px;
+				border-top-color: darkorchid;
+				border-bottom-width: 3px;
+				border-bottom-color: darkorchid;
+			}
+			tr ~ tr:hover td:last-child {
+				border-right: 3px solid darkorchid;
+				border-bottom-right-radius: 10px;
+				border-top-right-radius: 10px;
+				padding-right: 1px;
+			}
+			tr:first-child td, tr:first-child th {
+				border-top-width: 1px;
+			}
+			td:first-child, th:first-child {
+				border-left-width: 1px;
+				padding-left: 3px;
+			}
+			td:last-child, th:last-child {
+				border-right-width: 1px;
+				padding-right: 3px;
 			}
 
 			.libertarian {
@@ -211,15 +254,33 @@
 			.modal {
 				display: inline-block;
 				background-color: white;
-				width: 70vw;
+				width: 75vw;
 				padding: 1rem;
 				border: 1rem solid white;
 				border-radius: 1rem;
 				box-shadow: 0 0 1rem #0009;
-				font-size: min(4vw, 4vh);
+				font-size: max(min(4vw, 4vh), 1rem);
+			}
+
+			.modal .issue {
+				max-height: 55vh;
+				overflow-x: scroll;
+				font-size: max(min(3vw, 3vh), 1rem);
+			}
+
+			.modal .issue h1 {
+				margin: 0 0 1rem;
 			}
 		</style>
 		<script type="text/javascript">
+			function openModal(modalId) {
+				document.getElementById(modalId).style.visibility = 'visible';
+				document.body.style.overflow = 'hidden';
+			}
+			function closeModal(modalId) {
+				document.getElementById(modalId).style.visibility = 'hidden';
+				document.body.style.overflow = 'visible';
+			}
 			function fadeIn() {
 				const revealElements = document.querySelectorAll('.fade-in');
 				for (const revealElement of revealElements) {
@@ -301,7 +362,7 @@
 						<br class="mobile-break">
 						on Companies that Negligently Lose your Private Data.
 					</h2>
-					<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'visible'; document.body.style.overflow = 'hidden';">Find Out Why</button>
+					<button style="margin-top: 2rem" onclick="openModal('story')">Find Out Why</button>
 				</div>
 				<div class="promise fade-in">
 					<h2>
@@ -326,79 +387,79 @@
 						<th>Position</th>
 						<th>Nuance</th>
 					</tr>
-					<tr>
+					<tr onclick="openModal('abortion')">
 						<td>Abortion</td>
 						<td class="libertarian democrat">Pro-Choice...</td>
 						<td class="republican">...Until Natural Viability (~2 trimesters, with Exceptions)</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('housing')">
 						<td>Affordable Housing</td>
 						<td class="democrat">For Affordable Housing...</td>
 						<td class="independent">...As long as it is Built Sustainably, and Guaranteed to be Properly Maintained</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('guns')">
 						<td>Gun Rights</td>
 						<td class="libertarian republican">For Safe and Responsible Gun Ownership...</td>
-						<td class="democrat">...After Completing a Safety Course, and Properly Storing</td>
+						<td class="democrat">...After Completing a Safety Course, and Safely and Accessibly Storing</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('education')">
 						<td>Education</td>
 						<td class="independent">For Allowing Students to Apply across District Lines...</td>
 						<td class="libertarian">...Only if Parents Pay the Tax Difference and Drive their Kids there</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('environment')">
 						<td>Environment</td>
 						<td class="democrat">For Environmental Conservation and Water Safety...</td>
 						<td class="republican">...And Sustainable Building Development</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('taxes')">
 						<td>Taxes</td>
 						<td class="libertarian republican">No Income or Sales Tax...</td>
 						<td class="republican">...All Programs must be Paid for, and Budgets Balanced</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('infrastructure')">
 						<td>Infrastructure</td>
 						<td class="democrat">For Building/Restoring Productive Infrastructure...</td>
 						<td class="republican">...As long as it is Paid for</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('welfare')">
 						<td>Welfare</td>
 						<td class="independent">For a Welfare-to-Self-Sufficiency Pipeline...</td>
 						<td class="independent">...Reformed to create a Smoother Path to Self-Sufficiency</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('healthcare')">
 						<td>Healthcare</td>
 						<td class="republican">For Fair-market Healthcare... (Transparent Pricing, Fair Competition)</td>
 						<td class="democrat">...As long as Medicare is allowed to Negotiate Prices and be Purchased by the Public</td>
 					</tr>
-					<tr>
-						<td>Economics</td>
+					<tr onclick="openModal('economy')">
+						<td>Economy</td>
 						<td class="democrat">Fair-market over Free-market</td>
 						<td class="independent">Monopolies <em>must</em> be Prevented to Maintain Competition wherever possible</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('prisons')">
 						<td>Private Prisons</td>
 						<td class="democrat">Against Privatization of Prisons...</td>
 						<td class="democrat">...For Humane Treatment in Public Prisons</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('subsidies')">
 						<td>Subsidies/Corporate Welfare</td>
 						<td class="libertarian">For Ending Corporate Welfare...</td>
 						<td class="republican">...Limit Subsidies to Essential Small Businesses (like Small Family Farms)</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('lgbtq')">
 						<td>LGBTQ+ rights</td>
 						<td class="democrat">For LGBTQ+ Marriage and Equality Under the Law</td>
 						<td class="independent">Sporting Rules should Defer to the School or Sports Organization</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('unions')">
 						<td>Unions</td>
 						<td class="democrat">For Private Sector Unions...</td>
 						<td class="libertarian republican">...Against Public Sector Unions, Private Union membership must be Voluntary</td>
 					</tr>
-					<tr>
+					<tr onclick="openModal('limits')">
 						<td>Term Limits</td>
-						<td class="independent">For Limiting all Offices to 2 Terms total...</td>
+						<td class="independent">For Limiting all Offices to 2 (Senatorial) Terms total...</td>
 						<td class="independent">...And Supreme Court Justices to 10 Years Each</td>
 					</tr>
 				</table>
@@ -421,7 +482,158 @@
 			<div class="modal">
 				Last Year, I Underwent a Background Check for a Job, only to be Told a Month Later that All my Private Data: my Name, Birth Date, Address, Employment History, Social Security Number, etc, had ALL been Lost to a Data Breach of this Company's Servers. My Legal Options however, were Essentially Nil, because this Company was neither a Hospital nor a Bank, and therefore Faced no Legal Accountability for their Negligence. As a Senior Software Security Engineer with over 14 Years of Experience, I am Uniquely Qualified to Solve this Problem.
 				<br>
-				<button style="margin-top: 2rem" onclick="document.getElementById('story').style.visibility = 'hidden'; document.body.style.overflow = 'visible';">Got It</button>
+				<button style="margin-top: 2rem" onclick="closeModal('story')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="abortion">
+			<div class="modal">
+				<div class="issue">
+					<h1>Abortion</h1>
+					This is a very sensitive topic nowadays, especially given the recent ruling from the US Supreme Court. That being said, I have developed an ethical framework for dealing with this issue that really captures the heart of my position, and why I think viability is the best standard here. The framework starts by asking a very simple question: who owns the umbilical cord? It is not a question that is asked very much in this debate, but I think this is a great way to sort out the issue of bodily autonomy that often comes up. A common argument against abortion is that an unborn child is still a life, and that there are two lives involved in the pregnancy, and both lives need to be accounted for. Now, let one suppose, just for the sake of this example, that this is true; I then ask again, who owns the umbilical cord? The answer will probably be either or both of the unborn child and/or the parent, but I think all reasonable folks would agree that the parent owns the attachment of the cord to the womb, and therefore has the right to cut the cord at that end. If this is the case, we must then simply ask, what is the result of cutting this cord at a certain point of time in a pregnancy? It turns out that the answer lies in viability: in the best case, where an unborn child is brought into the world immediately after cutting the cord, the child can survive, on average, if this happens after the second trimester, otherwise, the result is generally considered to be a stillbirth, which is a perfectly natural, if extremely tragic, result of a miscarriage as well. Then, since miscarriages are as natural as they are again tragic, one must conclude that an abortion is no ethically different than a parent severing the ubmilical cord at their end, and inducing a miscarriage, and therefore it is natural, but again tragic, while still being ethically sound, and therefore should be legal. Of course, there are exceptions that have to be made in the third trimester for when the life of the mother is at risk, fetal abnormalities, and in the cases of rape and/or incest.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('abortion')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="housing">
+			<div class="modal">
+				<div class="issue">
+					<h1>Affordable Housing</h1>
+					Speaking with residents of Lebanon, this is yet another very sensitive topic, second only to Abortion in my experience. As a homeowner in the city, I know the concern that affordable housing can bring my fellow property downers. Even though this is often portrayed as a class divide, I see the concern much differently than most. My biggest fear is not the people that move in to affordable housing, but the possibility that an new party comes to power and intentionally underfunds and stops maintaining it to make an example of the other party, which leads to the decay that sometimes gives affordable housing a bad name. My mother was a landlord in southern New Hampshire for over a decade, so I know first hand that multi-family properties require constant upkeep. Therefore, before taking on these sorts of projects, we should be sure the entity doing so is capable of having the means and will to upkeep them, and we should look at making it as difficult as possible, if not impossible, for an opposing party to neglect the affordable housing that has already been built.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('housing')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="guns">
+			<div class="modal">
+				<div class="issue">
+					<h1>Gun Rights</h1>
+					This issue is another that is important to me personally. My great-uncle-in-law was an NRA instructor in Connecticut, and taught me how to shoot from a young age. That being said, the safety of gun ownership was always the most important thing to him, and all the responsible gun owners I have met in my life. I have yet to see someone who defends gun rights and takes them seriously that has not also taken a safety course, and stored their firearms securely, yet still accessibly. These two words may seem at odds with one another though: how can one be sure of the safe storage of the firearms in their home, and still have them accessible at a moment's notice if their life is put in danger? The answer is with a very simple and easy to remember rule: if there is anyone in the house that is not allowed to buy, own, or fire a gun, all guns need to be either locked away, or equipped by someone who is allowed to do so. This very simple rule is the best defense against someone sneaking into a dresser drawer and using a firearm in a way that they shouldn't. Will this stop all gun violence? Of course not, but this, along with a safety course, is one of the few things that most of us agree on that can increase gun safety, and such a small incovenience is a worthy price to pay to save lives and make sure one can maintain their 2nd Amendment rights safely and effectively.
+					<br>
+					On a more technical note: folks do ask me how one intends to enforce this, and the answer is secondary enforcement. This means that only if a police officer enters someone's home for an unrelated cause, such as to serve a search warrant or for a domestic violence dispute, and these rules are seen to be violated, in the first year, the officer would be required to issue a warning, but thereafter, these violations could be presecuted with a proportionate penalty.
+					<br>
+					One last technical note: the gun safety course must be both widely accessible, and only required for new purchases, public or private. That being said, no firearms dealer should be necessary for private sales if the buyer can show that they have taken the safety course.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('guns')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="education">
+			<div class="modal">
+				<div class="issue">
+					<h1>Education</h1>
+					Another issue that Lebanon takes very seriously is that of public education. We are fortunate to have one of the better public school systems in the state, but we do also pay higher property taxes in order to pay for it. There have been many proposals in this area, but the policy that I think would make the best impact while still being fair to the taxpayers is one that is inspired by another NH municipality. When I grew up in Barrington, NH, I had the opportunity to go to Coe-Brown Northwood Academy in the next town over, however CBNA was and is a public-private school, meaning that they had to take in all the kids in Northwood, but for surrounding towns like Barrington, prospective students would have to apply to the school, and if accepted, their parents would have to pay the difference in taxes, and drive their kids to the school. In my view, this is the ideal balance between being fair to taxpayers and educators, but still giving students the oppotunity to succeed in the school system that suits them best. I would propose to standardize this system in New Hampshire to give all students better opportunities to succeed.
+					<br>
+					<br>
+					As a side note on this topic, I also want to link folks to Fair Funding NH's <a href="https://fairfundingnh.org/learn/school-funding/">School Funding</a> and <a href="https://fairfundingnh.org/learn/property-taxes/">Property Taxes</a> pages because they do a great job of illustrating some of the complexities of public school funding inequities in NH, and why some folks are not happy with it. As it turns out, it is the ratio of overall property value in a school district to the number of students in that district that most greatly affects the school property tax rate of any particular school district, and this can can result in some quite varied rates throughout the state that can make the system seem unstable. Notably, it turns out thatdd doesn't particularly matter if a district is "property rich" or "property poor," because while being "property rich" does "help," that benefit is relative to the number of students in a district, (and vice-versa for "property poor" districts) which can vary widely, and be unpredictable. This means that both "property rich" and "property poor" communities can experience swings in tax rates, which is why I prefer the term "unstable" over the term "unfair." That being said, I think we really have to do deeper dive into this area regarding trends over time, but that being said, I will thoroughly review any proposals that come along to make sure that Lebanon is not shortchanged by them.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('education')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="environment">
+			<div class="modal">
+				<div class="issue">
+					<h1>Environment</h1>
+					After a long day or week of work, I love to go bike riding, kayaking, hiking, and hunting. These activities are often a main highlight of my day, and so I care deeply about preserving and maintaining the natural spaces that make these kinds of outdoor pursuits possible. That being said, I also realize that preventing all development of these spaces can lead to other problems like unaffordable housing, which I write about in more detail in its own section. A fair balance here is to acquire and maintain conservation areas, as we already do, but perhaps also mandate that for any land on which we build public housing, we should acquire and put under conservation another comparable piece of land. This would strike a good balance bewteen the two, and would put into perspective the responsibilities we have to consider when making these choices in developing such parcels.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('environment')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="taxes">
+			<div class="modal">
+				<div class="issue">
+					<h1>Taxes</h1>
+					As much as they may be disliked, we do need taxes to pay for our schools, roads, police, hospitals, and firefighters. That being said, what we can do in this regard is: a) use the taxes we do raise as effectively as possible, and b) not impose any new taxes on NH taxpayers. One thing that I have heard from some Lebanon residents, (especially those on fixed incomes) is that property taxes are too high, and while I do empathize with that point of view, adding a sales or income tax will not result in lower property taxes in the long term. For the first few years, in order to make it politically palatable, property taxes may indeed go down, but over time, that proverbial cookie jar will be too tempting, and we will end up just like Connecticut or New Jersey. For this reason, I think we should make the most of the taxes that we do collect, and spend them on what makes the most sense, mainly infrastructure and education. New Hampshire is a unique state in that we do not impose a sales or income tax, and I will do everything I can to make sure it stays that way.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('taxes')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="infrastructure">
+			<div class="modal">
+				<div class="issue">
+					<h1>Infrastructure</h1>
+					There's not a whole lot to say about infrastructure; we have it, we need it, it needs to be maintained. We need roads without potholes, clean water, and electricity that is reliable. As a professional software engineer, I would argue that we also need not just internet, but also fast and reliable internet. Much more than a matter of convenience, my wife is certainly thankful for it whenever she needs to look at high-resolution medical imaging for her patients from our house, and sometimes this can be a matter of life and death. Furthermore, while I don't think it is realistic to switch completely to something like wind or solar overnight, there is no reason not to invest in these technologies. Doing this will diversify our energy portfolio to increase reliability and prepare us for the possibility of much scarcer fossil fuels in the future.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('infrastructure')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="welfare">
+			<div class="modal">
+				<div class="issue">
+					<h1>Welfare</h1>
+					Welfare is little more contentious. On this issue, it is reasonable that folks who lose their job might need a bridge to the next one, but something that most can agree on is that folks shouldn't become welfare-dependent. The main thing we can do here is smooth out the cutting off of benefits to prevent what the NH DHHS affectionately calls, the <a href="https://www.dhhs.nh.gov/solving-benefits-cliff-effect">"Cliff Effect"</a> which, in their words, "occurs when wages from a new employment opportunity do not make up for a family’s loss of state benefits, putting the family in a worse financial situation." Clearly, this is an adverse economic incentive, and should be fixed by gradually reducing benefits to save taxpayer money in the long term. That being said, one effect of the current labor shortage is that higher starting wages will fortunately make such measures less relevant.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('welfare')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="healthcare">
+			<div class="modal">
+				<div class="issue">
+					<h1>Healthcare</h1>
+					With the Dartmouth-Hitchcock Medical Center in the city, this issue certainly is close to home for Lebanon, and is probably the most complicated issue we have today. That being said, having a wife workng as a doctor in the previously mentioned health system means that I do get a more in-depth view of the system as a whole, including the billing system. The cost of healthcare has indeed gotten out of control, and while this is indeed because of many different reasons, the main one that stands out is an imbalance of economic power, namely the power to negotiate prices. Patients have very little power in this regard, insurance companies have more, and the state and federal governments have the most. This being said, since pharmaceutical companies and medical device companies can hold their products behind patents for decades, the goverment must be given the freedom to negotiate with them directly. Some progress has been made in this regard at the federal level, and that's great, but more can definitely be done.We don't want to hurt the market forces that bring us the standard of medical care that we have, but we also don't want those who pay for that care, (which is all of us in one way or another) to be taken advantage of.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('healthcare')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="economy">
+			<div class="modal">
+				<div class="issue">
+					<h1>Economy</h1>
+					As with healthcare, my views on the economy as a whole are "Fair-market" over "Free-market." This may seem at first to be similar, but the difference boils down to this: a traditional "Free-market" ideology will advocate for a completely unregulated market that will "sort itself out" through competition. While sounding okay in principal, this quickly becomes a problem when issues like food and medicine safety come up. Therefore, I am in favor of regulation that creates a "fair" market, meaning that there is a baseline of safety, and from there, the market can compete on differentiating factors beyond the standard level of quality. It doesn't quite stop there though, since this kind of comptetion is not easy, what this system eventually incentivizes is for companies to buy their competitors instead of competing, and over time, this results in a monopolistic situation where quality declines as a result of a loss of competition. This is the reason for antitrust laws, and they need to be aggressively enforced to ensure that we don't go back to an era of monopolies.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('economy')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="prisons">
+			<div class="modal">
+				<div class="issue">
+					<h1>Private Prisons</h1>
+					This is an issue with a more simple explanation than the others: private prisons create an adverse incentive to keep them filled to a higher level (even an overfilled level) in order to increase the profits of their private owners. Furthermore, the same incentive exists for prisoner treatment, where profits can be further increased by forcing prisoners to live in conditions that border human rights abuses. The punshment for a crime should be the loss of one's freedom and time, and not the loss of their humanity.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('prisons')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="subsidies">
+			<div class="modal">
+				<div class="issue">
+					<h1>Subsidies/Corporate Welfare</h1>
+					This is another sensitive topic, and one where the best solution is not always apparent. For instance, one might not like the idea of subsidizing one industry over another, creating an unfair advantage, but at the same time, there are industries that are fundamental to us as a society that we might perfer not to be lured abroad by more favorable conditions. Farms, for instance, if they were not subsidized, might not be able to compete with the lower prices of farms abroad, even after shipping costs, and might go out of business, which is what one would expect from a strictly captilist point of view, however in practice, this would make our nation more ependent and vulnerable on others for basic agricultural needs, which would be very disadvantageous in any kind of serious conflict or other broad-reaching world event. Therefore, one should be sensitive in the of subsidies, and in following with the aforementioned priciples on "Fair-market" economic competition, they should only be given to participants in industries of strategic importance and ample competition.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('subsidies')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="subsidies">
+			<div class="modal">
+				<div class="issue">
+					<h1>Subsidies/Corporate Welfare</h1>
+					This is another sensitive topic, and one where the best solution is not always apparent. For instance, one might not like the idea of subsidizing one industry over another, creating an unfair advantage, but at the same time, there are industries that are fundamental to us as a society that we might perfer not to be lured abroad by more favorable conditions. Farms, for instance, if they were not subsidized, might not be able to compete with the lower prices of farms abroad, even after shipping costs, and might go out of business, which is what one would expect from a strictly captilist point of view, however in practice, this would make our nation more ependent and vulnerable on others for basic agricultural needs, which would be very disadvantageous in any kind of serious conflict or other broad-reaching world event. Therefore, one should be sensitive in the of subsidies, and in following with the aforementioned priciples on "Fair-market" economic competition, they should only be given to participants in industries of strategic importance and ample competition.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('subsidies')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="lgbtq">
+			<div class="modal">
+				<div class="issue">
+					<h1>LGBTQ+ Rights</h1>
+					As this seems to be the latest "wedge" issue between the parties, this is yet another senstitive topic. This being said, most folks are content to let others do as they please. It seems to be where we interact as humans that the "wedge" issues develop: pronouns, bathrooms, sports, etc. Looking first at pronouns, while I respect folks' wishes to be called by the pronouns of their choice, I also respect other folks' wishes to not use those pronouns if they so choose, with the acknowlegement that doing so is extremely impolite and potentially psychologically damaging to the individual involved. In a sense, one could call this bullying, and treat it as such: explain that it's hurtful, hope they empathize, and move on. As for bathrooms, indeividual bathrooms are the best compromise in sight. Finally, for sports, there is a bit more of a dilemma. On one hand, there is the legitimate concern of participants that they will be at a disadvantage in sport. On the other hand, there is an individual that my want to compete amongst others of a different assignment at birth, and being prevented from doing that can again do psychological harm to them. In these case, I defer to the schools and organizations themselves to determine whether the individuals involved are competing in good faith or not. There is a bigger conversation to be had about this as it develops, but for now, this compromise is the best that can be done.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('lgbtq')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="unions">
+			<div class="modal">
+				<div class="issue">
+					<h1>Unions</h1>
+					Unions are indeed a powerful concept and a strong force in the workplace, and have an important place in society. In general, unions are a great balance of contract negotiating power between empoyers and employees. In general, employees have more bargaining power when negotiating collectively as a union, rather than negotiating as individuals. This power is necessary in the private sector, as employers are unelected, and are under to obligation to reliquish their ownership of capital, and so the collective negotiation of unions is a check on the power of private ownership. In the public sector however, employers are ultimately elected, and so public sector unions are less necessary. If public sector employees do not like their employers, they can simply advocate for new ones at the next election. For this reason, I am not against public sector unions existing necessarily, but I am against the disproportionate amount of political power they wield relative to their membership. That all being said though, the more relevant issue in New Hampshire currently is Right-to-Work laws, which essentially legislate that an employee cannot be forced to join a union or pay union dues in order to work for any particular employer. While I am in support of the idea behind the legislation, the argument against it does raise a very important point that the law itself that the latest porposed test does not account for: contracts. If an employee does not wish to join a union or pay its dues, they also cannot partake in the union's contract unless both the employer and enployee agree to it. And particularly, the employer as well must be protected from legal action if they negotiate differing contracts between union and non-union employees, in order to protect the value of the union's collective negotiation. If this was done, the employee could determine the difference in value of a union and non-union contract that they negotiate themselves, and can then make the decision on whether the union dues are worth the presumably more favorable terms, and the checks and balances on the situation will be restored. At the same time then, it should be further discussed in the legislature whether an employee that has left a union can re-join without fear of retaliation.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('unions')">Got It</button>
+			</div>
+		</div>
+		<div class="modal-background" style="visibility: hidden;" id="limits">
+			<div class="modal">
+				<div class="issue">
+					<h1>Term Limits</h1>
+					Term limits are something that a lot of folks are discussing nowadays as a solution to their dissatisfaction with politicians. The theory being that, as with Presidents, the terms of other offices should be limited as well, so that one person does not overstay the office and become a mainstay simply because no one else can match the connections, donations, wealth, and tenure that they have. Unfortunately, many Congressional seats have seemed to have this effect in recent decades. Presidents come and go, but faces like those of Pelosi, McConnell, Grassley, Schumer, and Leahy have been around for almost half a lifetime, usually because they have the above attributes combined with a safe party seat. This is indeed the case in Congress, and I think term limits shoud extend to Supreme Court justices as well. To me, term limits are also an attempt to check corruption, with the theory being that over time, corruption via political donation is both more likely, easier, and more necesary to stay in one's seat. Therefore, the addition of term limits would at least reset the clock on corrupting forces. I think that 10 years is more than enough for any particular office. Otherwise, it's time to move up, or move out.
+				</div>
+				<button style="margin-top: 2rem" onclick="closeModal('limits')">Got It</button>
 			</div>
 		</div>
 	</body>
